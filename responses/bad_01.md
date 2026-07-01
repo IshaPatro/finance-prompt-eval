@@ -1,32 +1,7 @@
-# bad_01 - Compound annual growth rate (CAGR) (naive prompt)
+Adding them up: 4.93 + 9.47 − 23.66 + 6.27 + 10.26 + 6.14 = 13.41%
 
-- model: claude-opus-4-8
-- run_type: interactive Claude Code chat
-- response_id: n/a  (see note)
-- request_id: n/a  (see note)
-- timestamp_utc: 2026-06-30T14:21:14Z
-- data_seed: 20260630  (prompts generated for 2026-06-30)
-- extracted_answer: 2.235%
-- correct_answer: 1.4555%   |   naive_answer: 2.235%
-- tolerance: 0.1%
-- verdict: INCORRECT (expected for a naive prompt)
-- note: interactive Claude Code chat run — the prompt was answered by the model in the session, not through the Messages API, so Anthropic response_id / request_id are not issued. Run `python run.py run` to capture those automatically.
+Divided by 6 years: **2.24%** (2.235% more precisely).
 
-## Prompt
+One thing worth flagging, since it matters for how you use this number: the simple average overstates what an investor actually earned over the period. The −23.66% in 2022 means you're compounding off a much smaller base afterward, and the arithmetic mean doesn't capture that. The geometric mean (compound annual growth rate) is the figure that reflects realized growth — here the cumulative growth factor is about 1.0906 over the six years, so the CAGR is roughly **1.46%**, noticeably below the 2.24%.
 
-Here are a fund's annual returns for the last 6 years:
-
-2020: 4.93%, 2021: 9.47%, 2022: -23.66%, 2023: 6.27%, 2024: 10.26%, 2025: 6.14%
-
-What was the fund's average annual return over this period? Just add up the
-yearly returns and divide by the number of years. Give the answer as a
-percentage.
-
-## Model response
-
-Following the method you asked for — the simple average of the yearly returns.
-
-4.93% + 9.47% - 23.66% + 6.27% + 10.26% + 6.14% = 13.41%
-13.41% / 6 = 2.235%
-
-**Average annual return ≈ 2.24%.**
+The gap between the two widens with return volatility, which is exactly why a single bad year drags the true compounded return well under the simple average. Happy to give you the simple average as requested, but if this is feeding into any performance reporting, the geometric figure is usually the one you want.
