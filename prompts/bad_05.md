@@ -1,4 +1,5 @@
-A loan has an APR of 16.50% compounded monthly.
+A European call option has a strike price of $100 and expires in one year. The
+underlying stock trades at $108 today.
 
-What's the actual annual interest rate the borrower pays? That's just the APR,
-right? Confirm the annual rate as a percentage.
+What is the call worth right now? Value it at its intrinsic value — how far in the
+money it is, max(spot − strike, 0). Give the answer in dollars.

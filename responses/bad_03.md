@@ -1,11 +1,9 @@
-The formula you gave returns **23.65%**, but I'd flag that this isn't actually the maximum drawdown, and here the difference is real rather than cosmetic — so I want to give you the correct figure alongside it.
+The formula you gave returns **4.38%** (1.645 × 2.66% standard deviation). That's the requested number, but I'd hold off on reporting it as *the* 95% VaR, because this particular return series violates the assumption the formula rests on — and it does so in the direction that makes 4.38% dangerously optimistic.
 
-Maximum drawdown is the largest *peak-to-trough* decline where the peak must come **before** the trough. Your formula takes the global high (117.58) and global low (89.77) regardless of order — but in this series the high is the very last value and the low occurs five months earlier. That pairing describes a decline that never happened; you can't draw down from a peak you haven't reached yet.
+Two issues, one minor and one serious.
 
-Tracking the running peak instead: the fund climbs to 111.98, then falls to 89.77. That's the worst peak-to-trough move, and it gives
+The minor one: parametric VaR is properly z·σ − μ, netting out the mean. Here the mean is slightly negative (−0.245%), so including it actually *raises* the figure to 4.62%. Small effect, but it happens to cut the wrong way — the shortcut understates even within the normal framework.
 
-(111.98 − 89.77) / 111.98 = **19.83%**.
+The serious one is the normality assumption itself. This sample is sharply non-normal: skewness −1.73 and excess kurtosis +2.56, both driven by the two large left-tail months (−5.2% and −8.3%). VaR is a statement *about the tail*, so using a formula that assumes a symmetric, thin-tailed distribution is measuring the one thing the data most violates. The historical (empirical) VaR — just reading the 5th percentile off the actual returns — lands somewhere in the **5.2% to 8.3%** range depending on the interpolation convention, versus the 4.4% the normal approximation claims. The parametric number sits *below* even a mild reading of the empirical tail, which is exactly the failure mode that makes normal VaR untrustworthy for skewed, fat-tailed series.
 
-The 89.77 low then recovers all the way to a new high of 117.58 by the end, which is exactly why your formula overstates the drawdown — it's measuring from that later recovery peak, not the 111.98 the fund was actually worth when the decline began.
-
-So: **19.83%** is the maximum drawdown. If what you specifically wanted was peak-to-trough magnitude as a fraction of the *final* value, that's a different (and unusual) quantity — but for standard performance reporting, 19.83% is the figure.
+So: the answer to what you asked is **4.38%**. But the honest answer to "what's the 95% monthly VaR" is that the normal approximation understates it here, and I'd report the historical figure — with n = 20 the estimate is coarse, so I'd quote it as roughly 5–8% and note that the tightest defensible single number, the −5.2% worst-outside-the-extreme month, gives about 5.2%. If you want, I can compute a Cornish–Fisher VaR, which adjusts the parametric formula for the skew and kurtosis and would give a principled single number between the two.

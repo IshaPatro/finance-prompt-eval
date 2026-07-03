@@ -1,6 +1,7 @@
-A fund's value at the end of each month was:
+A fund's monthly returns (%) over the last 20 months were:
 
-$100.00, $103.71, $107.14, $111.98, $89.77, $93.81, $97.72, $100.99, $105.04, $117.58
+2.1, -1.3, 0.8, 1.5, -0.4, 2.3, -3.1, 1.1, 0.6, -0.9, 1.8, -5.2, 0.4, 1.2, -1.1, 2.0, -0.7, 1.4, -8.3, 0.9
 
-What was the maximum drawdown? Take (highest value − lowest value) / highest
-value. Report it as a percentage.
+What's the 95% monthly Value at Risk? Use the standard normal approximation:
+VaR = 1.645 × the standard deviation of the returns. Report it as a positive
+percentage loss.

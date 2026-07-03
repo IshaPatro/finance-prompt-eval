@@ -1,6 +1,8 @@
-A portfolio holds two assets. Asset A has an annualized volatility of 25.25% and
-Asset B 16.04%; their correlation is 0.49. The weights are 60% in A and 40%
-in B.
+A portfolio holds three funds. Over the past year:
 
-What's the portfolio's annualized volatility? Combine the two volatilities with
-the weights: weightA × volA + weightB × volB. Give the answer as a percentage.
+- $5,000 in Fund A, which returned 2%
+- $3,000 in Fund B, which returned 6%
+- $2,000 in Fund C, which returned 16%
+
+What was the portfolio's return over the year? Just average the three funds'
+returns: (2% + 6% + 16%) / 3. Give the answer as a percentage.

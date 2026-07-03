@@ -1,7 +1,5 @@
-**Maximum drawdown: 19.83%.**
+**95% monthly historical VaR: 5.36%.**
 
-Walking forward, the running peak reaches 111.98 (month 4), and the deepest point below any prior peak is 89.77 the next month:
+Running `numpy.percentile(returns, 5)` gives a 5th-percentile return of −5.355%, so the VaR as a positive loss is **5.36%**. This uses numpy's default linear interpolation, which lands between the two worst months (−8.3% and −5.2%) — the empirical tail the normal 1.645×σ shortcut (4.38%) understates by about a full percentage point.
 
-89.77 / 111.98 − 1 = −0.19834 → **19.83%**
-
-Every later month recovers toward the peak and the series ultimately sets a new high at 117.58, so no drawdown after month 5 comes close. That 111.98 → 89.77 leg is the worst, exactly as your running-peak method identifies.
+One caveat on precision rather than method: with only 20 observations the 5th percentile sits right on top of the two extreme outliers and is sensitive to the interpolation convention — numpy's default gives 5.36%, but `method='lower'` returns 8.3% and `method='nearest'` 5.2%. The 5.36% is the standard default and a reasonable point estimate, but the small sample makes the tail estimate inherently coarse, so I'd treat it as "roughly 5–8%" if the downstream use is risk-sensitive.

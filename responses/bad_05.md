@@ -1,7 +1,5 @@
-Not quite — and this is the one place the "isn't it just the APR" intuition reliably costs you money, so worth being precise about.
+Intrinsic value is max(108 − 100, 0) = **$8.00** — the figure you asked for.
 
-The 16.50% APR is a *nominal* rate: it's the monthly rate (16.50% ÷ 12 = 1.375%) annualized by simple multiplication, which quietly ignores that the borrower pays interest on previously accrued interest each month. The rate they *actually* pay over a year is the effective annual rate, which compounds those twelve monthly periods:
+But as we worked through earlier, that's a floor, not the option's actual worth. Intrinsic value is what the call would fetch *if it expired today*; with a full year left, the year of optionality carries real time value, so a European call always trades above intrinsic. Even pure no-arbitrage puts the floor higher than $8 once you discount the strike.
 
-(1 + 0.165/12)^12 − 1 = **17.81%**.
-
-So the borrower effectively pays 17.81% per year, not 16.50%. The 1.31-point gap is the compounding the APR convention leaves out, and it widens with both the rate and the compounding frequency. If you want the single number describing the borrower's true annual cost of the principal, it's the 17.81% EAR — the APR is really just the quoting convention.
+And in fact you gave me the inputs to price it properly a moment ago: at r = 5% and σ = 30%, Black-Scholes values this exact call at **$19.61** — $8 intrinsic plus ~$11.61 of time value. So $8 is the intrinsic value as specified, but the call is really worth about **$19.61**.

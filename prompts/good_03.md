@@ -1,10 +1,9 @@
-A fund's value at the end of each month was:
+A fund's monthly returns (%) over the last 20 months were:
 
-$100.00, $103.71, $107.14, $111.98, $89.77, $93.81, $97.72, $100.99, $105.04, $117.58
+2.1, -1.3, 0.8, 1.5, -0.4, 2.3, -3.1, 1.1, 0.6, -0.9, 1.8, -5.2, 0.4, 1.2, -1.1, 2.0, -0.7, 1.4, -8.3, 0.9
 
-Compute the maximum drawdown. Walk the series forward in time keeping a running
-peak (the highest value seen so far); at each point the drawdown is
-current / running_peak − 1, and the maximum drawdown is the most negative of
-those. The trough has to come after the peak it's measured from — so this is not
-the same as taking the overall highest and lowest values. Report the maximum
-drawdown as a positive percentage.
+Compute the 95% monthly *historical* Value at Risk — the empirical 5th-percentile
+loss of the actual return sample. Do not assume a normal distribution: this
+series is fat-tailed, and the normal 1.645×σ shortcut understates the observed
+tail. Write and run a short Python script (e.g. numpy.percentile(returns, 5)) to
+get the empirical 5th percentile, then report VaR as a positive percentage loss.

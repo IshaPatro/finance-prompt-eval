@@ -1,7 +1,19 @@
-**Portfolio volatility: 19.13%.**
+The funds hold different dollar amounts, so the portfolio's return is the
+dollar-weighted average of the three returns, not the plain average.
 
-Plugging in:
+```python
+holdings = [(5000, 2), (3000, 6), (2000, 16)]
+total = sum(v for v, _ in holdings)
+weighted = sum(v * r for v, r in holdings) / total
+print(round(weighted, 2))
+```
 
-σ_p = √(0.6²·25.25² + 0.4²·16.04² + 2·0.6·0.4·0.49·25.25·16.04) = **19.13%**
+Output: `6.0`
 
-As the formula's cross term captures, the ρ = 0.49 correlation pulls this below the 21.57% plain weighted average — that 2.4-point reduction is the diversification benefit from the two assets not moving in lockstep.
+**Portfolio return: 6.0%.**
+
+Half the money sits in Fund A at just 2%, so that position dominates. Weighting by
+dollars, Fund A contributes 0.5 × 2 = 1.0%, Fund B 0.3 × 6 = 1.8%, and Fund C
+0.2 × 16 = 3.2% — totaling 6.0%. The equal-weighted average overstates the result
+at 8.0% because it treats the small 16% position as if it were as large as the
+2% one.

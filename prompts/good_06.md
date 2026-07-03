@@ -1,12 +1,11 @@
-A portfolio holds two assets. Asset A has an annualized volatility of 25.25% and
-Asset B 16.04%; their correlation is 0.49. The weights are 60% in A and 40%
-in B.
+A portfolio holds three funds. Over the past year:
 
-Compute the annualized portfolio volatility, accounting for the correlation
-between the two assets:
+- $5,000 in Fund A, which returned 2%
+- $3,000 in Fund B, which returned 6%
+- $2,000 in Fund C, which returned 16%
 
-    σ_p = sqrt( wA²·σA² + wB²·σB² + 2·wA·wB·ρ·σA·σB )
-
-A plain weighted average of the two volatilities ignores diversification and
-overstates the portfolio's risk whenever ρ < 1, so use the formula above. Report
-the portfolio volatility as a percentage.
+Compute the portfolio's actual return by weighting each fund's return by its
+share of the $10,000 total invested — not by averaging the three returns equally.
+A plain average is wrong here because the funds hold different amounts: the $5,000
+position moves the portfolio 2.5× as much as the $2,000 one. Write and run a short
+Python script to compute the value-weighted return and report it as a percentage.
